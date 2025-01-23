@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template
+from flask import Flask, request, redirect, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -16,24 +16,23 @@ class Student_Information(db.Model):
     def __repr__(self):
         return '<Student %r>' % self.id
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/')
 def main():
-    if request.method == 'POST':
-        student_name = request.form['student_name']
-        student_id = request.form['student_id']
-        student_course = request.form['student_course']
-        college_year = request.form['college_year']
-        new_student = Student_Information(student_name=student_name, student_id=student_id, student_course=student_course, college_year=college_year)
-        try:
-            db.session.add(new_student)
-            db.session.commit()
-            return redirect('/')
-        except:
-            return 'There was an issue adding a student'
-    
+    return render_template('login_page.html')
+
+@app.route('/login', methods=['POST'])
+def login():
+    student_number = request.form['student_number']
+    password = request.form['password']
+
+    if student_number == "student@edu.com" and password == "1234":
+        return redirect(url_for('student_information'))
     else:
-        students = Student_Information.query.order_by(Student_Information.student_name).all()
-        return render_template('index.html', students=students)
+        return "Invalid Credential or Contact Admin"
+
+@app.route('/student_information')
+def student_information():
+    return render_template('student_information.html') 
 
 if __name__ == '__main__':
     app.run(debug=True)
