@@ -13,9 +13,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" href="#">Home</a>
-          <a class="nav-link" href="#">View Courses</a>
-          <a class="nav-link" href="#">Enrollment</a>
+          <a class="nav-link" href="{{ url_for('student_information') }}">Home</a>
+          <a class="nav-link active" href="#">View Courses</a>
+          <a class="nav-link" href="{{ url_for('enroll_course') }}">Enrollment</a>
         </div>
       </div>
     </div>

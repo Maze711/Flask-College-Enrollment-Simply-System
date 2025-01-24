@@ -32,7 +32,15 @@ def login():
 
 @app.route('/student_information')
 def student_information():
-    return render_template('student_information.html') 
+    return render_template('student_information.html')
+
+@app.route('/view_course')
+def view_course():
+    return render_template('view_course.html')
+
+@app.route('/enroll_course')
+def enroll_course():
+    return render_template('enrollment_page.html')    
 
 if __name__ == '__main__':
     app.run(debug=True)
