@@ -23,8 +23,61 @@
 
 <div class="d-flex align-items-center justify-content-center vh-100">
   <div class="shadow-sm bg-white rounded w-75 h-75">
+    <div class="d-flex">
+      <div class="border border-primary p-3 h-100% w-25">
+        <div class="d-flex mb-3">
+          <div class="p-2 bd-highlight">Select Your Section:</div>
+        </div>
+        <div class="dropdown d-flex justify-content-center">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border border-danger p-3 h-100 w-75">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Year</th>
+              <th scope="col">Section</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Day</th>
+              <th scope="col">Time</th>
+              <th scope="col">Room</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry the Bird</td>
+              <td></td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
+{% endblock %}
 
+{% block footer %}
 
 {% endblock %}
