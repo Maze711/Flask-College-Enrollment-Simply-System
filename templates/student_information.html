@@ -5,58 +5,56 @@
 {% endblock %}
 
 {% block body %}
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">College Enrollment</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" href="#">Home</a>
-          <a class="nav-link" href="{{ url_for('view_course') }}">View Courses</a>
-          <a class="nav-link" href="{{ url_for('enroll_course') }}">Enrollment</a>
+
+<!-- Summarization of Information block -->
+<div class="container vh-100 d-flex align-items-start justify-content-center mt-5 pt-5">
+  <div class="row w-100">
+    <div class="col-md-2">
+      <div class="shadow-sm bg-white w-auto rounded h-auto">
+        <div class="border border-primary p-3 w-auto">
+            <div class="d-flex justify-content-center mb-3">
+                <div class="p-2 bd-highlight">Name</div>
+                <div class="p-2 bd-highlight">
+                    <span class="border-bottom d-inline-block w-100"></span>
+                </div>
+            </div>
         </div>
       </div>
     </div>
-</nav>
 
-<div class="d-flex align-items-center justify-content-center vh-100">
-    <div class="shadow-sm bg-white rounded w-75 h-75">
-        <div class="d-flex">
-            <div class="border border-primary p-3 h-100 w-25">
-                <div class="d-flex justify-content-center mb-3">
-                    <div class="p-2 bd-highlight">Name</div>
-                    <div class="p-2 bd-highlight">
-                        <span class="border-bottom d-inline-block w-100"></span>
-                    </div>
+    <!-- Other/Expanded Information Container block -->
+    <div class="col-md-10">
+      <div class="shadow-sm bg-white rounded w-auto h-auto">
+        <div class="border border-danger p-3 w-100">
+            <div class="d-flex flex-row bd-highlight mb-3">
+                <div class="p-2 bd-highlight">
+                    Surname: <span class="border-bottom d-inline-block w-100"></span>
+                </div>
+                <div class="p-2 bd-highlight">
+                    First Name: <span class="border-bottom d-inline-block w-100"></span>
+                </div>
+                <div class="p-2 bd-highlight">
+                    Middle Name: <span class="border-bottom d-inline-block w-100"></span>
                 </div>
             </div>
-            <div class="border border-danger p-3 h-100 w-75">
-                <div class="d-flex flex-row bd-highlight mb-3">
-                    <div class="p-2 bd-highlight">
-                        Surname: <span class="border-bottom d-inline-block w-100"></span>
-                    </div>
-                    <div class="p-2 bd-highlight">
-                        First Name: <span class="border-bottom d-inline-block w-100"></span>
-                    </div>
-                    <div class="p-2 bd-highlight">
-                        Middle Name: <span class="border-bottom d-inline-block w-100"></span>
-                    </div>
+            <div class="d-flex flex-row bd-highlight mb-3">
+                <div class="p-2 bd-highlight">
+                    College Year: <span class="border-bottom d-inline-block w-100"></span>
                 </div>
-                <div class="d-flex flex-row bd-highlight mb-3">
-                    <div class="p-2 bd-highlight">
-                        College Year: <span class="border-bottom d-inline-block w-100"></span>
-                    </div>
-                    <div class="p-2 bd-highlight">
-                        Course: <span class="border-bottom d-inline-block w-100"></span>
-                    </div>
-                    <div class="p-2 bd-highlight">
-                        Current Section: <span class="border-bottom d-inline-block w-100"></span>
-                    </div>
+                <div class="p-2 bd-highlight">
+                    Course: <span class="border-bottom d-inline-block w-100"></span>
+                </div>
+                <div class="p-2 bd-highlight">
+                    Current Section: <span class="border-bottom d-inline-block w-100"></span>
                 </div>
             </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
+{% endblock %}
+
+{% block footer %}
+
 {% endblock %}

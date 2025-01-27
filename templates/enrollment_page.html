@@ -5,22 +5,6 @@
 {% endblock %}
 
 {% block body %}
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">College Enrollment</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link" href="{{ url_for('student_information') }}">Home</a>
-          <a class="nav-link" href="{{ url_for('view_course') }}">View Courses</a>
-          <a class="nav-link active" href="#">Enrollment</a>
-        </div>
-      </div>
-    </div>
-</nav>
-
 <!-- Selection of Section block -->
 <div class="container vh-100 d-flex align-items-start justify-content-center mt-5 pt-5">
   <div class="row w-100">
