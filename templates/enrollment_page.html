@@ -19,9 +19,9 @@
               Dropdown button
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              {% for section in college_section %}
+                <li><a class="dropdown-item" href="#">{{ section.college_section }}</a></li>
+              {% endfor %}
             </ul>
           </div>
         </div>

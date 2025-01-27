@@ -44,7 +44,8 @@ def view_course():
 
 @app.route('/enroll_course')
 def enroll_course():
-    return render_template('enrollment_page.html')    
+    course_section = college_course_list.query.with_entities(college_course_list.college_section).distinct()
+    return render_template('enrollment_page.html', college_section=course_section)  
 
 if __name__ == '__main__':
     app.run(debug=True)
