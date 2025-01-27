@@ -16,11 +16,20 @@
           </div>
           <div class="dropdown d-flex justify-content-center">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown button
+              {% if selected_section %}
+                {{ selected_section }}
+              {% else %}
+                Choose Section
+              {% endif %}
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               {% for section in college_section %}
-                <li><a class="dropdown-item" href="#">{{ section.college_section }}</a></li>
+                <li>
+                  <form method="POST" action="/enroll_course" style="display: inline;">
+                    <input type="hidden" name="section" value="{{ section[0] }}">
+                    <button class="dropdown-item" type="submit">{{ section[0] }}</button>
+                  </form>
+                </li>              
               {% endfor %}
             </ul>
           </div>
@@ -30,7 +39,7 @@
 
     <!-- Section Selected Information Container block -->
     <div class="col-md-10">
-      <div class="shadow-sm bg-white rounded w-auto h-75">
+      <div class="shadow-sm bg-white rounded w-auto h-auto"
         <div class="border border-danger p-3 h-100 w-auto">
           <table class="table table-striped">
             <thead>
@@ -44,6 +53,22 @@
               </tr>
             </thead>
             <tbody>
+              {% if courses %}
+                {% for course in courses %}
+                  <tr>
+                    <td>{{ course.college_year }}</td>
+                    <td>{{ course.college_section }}</td>
+                    <td>{{ course.college_subject }}</td>
+                    <td>{{ course.college_day }}</td>
+                    <td>{{ course.schedule_time }}</td>
+                    <td>{{ course.room_section }}</td>
+                  </tr>
+                {% endfor %}
+              {% else %}
+                <tr>
+                  <td colspan="6" class="text-center">No Courses Available</td>
+                </tr>
+              {% endif %}
             </tbody>
           </table>
         </div>

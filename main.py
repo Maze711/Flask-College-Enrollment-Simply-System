@@ -42,10 +42,18 @@ def view_course():
     course_data = college_course_list.query.all()
     return render_template('view_course.html', courses=course_data)
 
-@app.route('/enroll_course')
+@app.route('/enroll_course', methods=['GET', 'POST'])
 def enroll_course():
+    selected_section = None
+    if request.method == 'POST':
+        selected_section = request.form.get('section')
+    if selected_section:
+        courses = college_course_list.query.filter_by(college_section=selected_section).all()
+    else:
+        courses = []
+
     course_section = college_course_list.query.with_entities(college_course_list.college_section).distinct()
-    return render_template('enrollment_page.html', college_section=course_section)  
+    return render_template('enrollment_page.html', courses=courses, selected_section=selected_section, college_section=course_section)
 
 if __name__ == '__main__':
     app.run(debug=True)
