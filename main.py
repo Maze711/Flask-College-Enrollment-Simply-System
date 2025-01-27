@@ -3,15 +3,18 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///student_information.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///college_course_list.db'
 db = SQLAlchemy(app)
 
-class Student_Information(db.Model):
+class college_course_list(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    student_name = db.Column(db.String(200), nullable=False)
-    student_id = db.Column(db.String(200), nullable=False)
-    student_course = db.Column(db.String(200), nullable=False)
+    college_course = db.Column(db.String(200), nullable=False)
     college_year = db.Column(db.String(200), nullable=False)
+    college_section = db.Column(db.String(200), nullable=False)
+    college_subject = db.Column(db.String(200), nullable=False)
+    college_day = db.Column(db.String(200), nullable=False)
+    schedule_time = db.Column(db.String(200), nullable=False)
+    room_section = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
         return '<Student %r>' % self.id
@@ -36,7 +39,8 @@ def student_information():
 
 @app.route('/view_course')
 def view_course():
-    return render_template('view_course.html')
+    course_data = college_course_list.query.all()
+    return render_template('view_course.html', courses=course_data)
 
 @app.route('/enroll_course')
 def enroll_course():
