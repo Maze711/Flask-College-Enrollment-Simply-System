@@ -24,7 +24,7 @@ def login():
 
         if student:
             if student.student_course == 'BSCS':
-                return redirect(url_for('student_info_page'))
+                return redirect(url_for('student_info_page', student_number=student.student_number))
             else:
                 return "Access restricted to BSCS students only. Please contact the administration for assistance."
         else:
@@ -32,8 +32,10 @@ def login():
 
 @app.route('/student_info_page')
 def student_info_page():
-    return render_template('student_info_page.html')
-
+    student_number = request.args.get('student_number')
+    student = student_information.query.filter_by(student_number=student_number).first()
+    course_data = college_course_list.query.all()
+    return render_template('student_info_page.html', student=student, courses=course_data)
 
 @app.route('/view_course')
 def view_course():
