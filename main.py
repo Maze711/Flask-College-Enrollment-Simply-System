@@ -17,17 +17,23 @@ def main():
 
 @app.route('/login', methods=['POST'])
 def login():
-    student_number = request.form['student_number']
-    password = request.form['password']
+    if request.method == 'POST':
+        student_number = request.form['student_number']
+        student_password = request.form['student_password']
+        student = student_information.query.filter_by(student_number=student_number, student_password=student_password).first()
 
-    if student_number == "student@edu.com" and password == "1234":
-        return redirect(url_for('student_information'))
-    else:
-        return "Invalid Credential or Contact Admin"
+        if student:
+            if student.student_course == 'BSCS':
+                return redirect(url_for('student_info_page'))
+            else:
+                return "Only BSCS students can log in"
+        else:
+            return "Invalid Credential or Contact Admin"
 
-@app.route('/student_information')
+@app.route('/student_info_page')
 def student_info_page():
-    return render_template('student_information.html')
+    return render_template('student_info_page.html')
+
 
 @app.route('/view_course')
 def view_course():
