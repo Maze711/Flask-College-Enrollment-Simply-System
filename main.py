@@ -26,9 +26,9 @@ def login():
             if student.student_course == 'BSCS':
                 return redirect(url_for('student_info_page'))
             else:
-                return "Only BSCS students can log in"
+                return "Access restricted to BSCS students only. Please contact the administration for assistance."
         else:
-            return "Invalid Credential or Contact Admin"
+            return "Invalid credentials. Please try again or contact the administrator for assistance."
 
 @app.route('/student_info_page')
 def student_info_page():
