@@ -1,0 +1,38 @@
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
+db = SQLAlchemy()
+
+class college_course_list(db.Model):
+    __bind_key__ = 'college_courses'
+    id = db.Column(db.Integer, primary_key=True)
+    college_course = db.Column(db.String(200), nullable=False)
+    college_year = db.Column(db.String(200), nullable=False)
+    college_section = db.Column(db.String(200), nullable=False)
+    college_subject = db.Column(db.String(200), nullable=False)
+    college_day = db.Column(db.String(200), nullable=False)
+    schedule_time = db.Column(db.String(200), nullable=False)
+    room_section = db.Column(db.Integer, nullable=False)
+
+    def __repr__(self):
+        return '<CollegeCourseList %r>' % self.id
+
+class student_information(db.Model):
+    __bind_key__ = 'students'
+    id = db.Column(db.Integer, primary_key=True)
+    student_number = db.Column(db.String(200), nullable=False)
+    student_surname = db.Column(db.String(200), nullable=False)
+    student_firstname = db.Column(db.String(200), nullable=False)
+    student_middlename = db.Column(db.String(200), nullable=False)
+    student_suffix = db.Column(db.String(200), nullable=False)
+    student_course = db.Column(db.String(200), nullable=False)
+    student_year = db.Column(db.String(200), nullable=False)
+    student_section = db.Column(db.String(200), nullable=False)
+    student_email = db.Column(db.String(200), nullable=False)
+    student_password = db.Column(db.String(200), nullable=False)
+    student_status = db.Column(db.String(200), nullable=False)
+    student_enrolled = db.Column(db.Boolean, nullable=False)
+    student_created = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return '<StudentInformation %r>' % self.id
