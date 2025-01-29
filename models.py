@@ -20,19 +20,19 @@ class college_course_list(db.Model):
 class student_information(db.Model):
     __bind_key__ = 'students'
     id = db.Column(db.Integer, primary_key=True)
-    student_number = db.Column(db.String(200), nullable=False)
+    student_number = db.Column(db.String(20), nullable=False)
     student_surname = db.Column(db.String(200), nullable=False)
     student_firstname = db.Column(db.String(200), nullable=False)
     student_middlename = db.Column(db.String(200), nullable=False)
-    student_suffix = db.Column(db.String(200), nullable=False)
-    student_course = db.Column(db.String(200), nullable=False)
-    student_year = db.Column(db.String(200), nullable=False)
-    student_section = db.Column(db.String(200), nullable=False)
+    student_suffix = db.Column(db.String(10))
+    student_course = db.Column(db.String(100), nullable=False)
+    student_year = db.Column(db.String(50), nullable=False)
+    student_section = db.Column(db.String(50))
     student_email = db.Column(db.String(200), nullable=False)
     student_password = db.Column(db.String(200), nullable=False)
-    student_status = db.Column(db.String(200), nullable=False)
+    student_status = db.Column(db.String(50), nullable=False)
     student_enrolled = db.Column(db.Boolean, nullable=False)
-    student_created = db.Column(db.DateTime, default=datetime.utcnow)
+    student_created = db.Column(db.DateTime, nullable=False)
 
     def __repr__(self):
         return '<StudentInformation %r>' % self.id

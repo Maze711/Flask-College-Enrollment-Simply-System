@@ -26,7 +26,7 @@ def login():
         return "Invalid Credential or Contact Admin"
 
 @app.route('/student_information')
-def student_information():
+def student_info_page():
     return render_template('student_information.html')
 
 @app.route('/view_course')
