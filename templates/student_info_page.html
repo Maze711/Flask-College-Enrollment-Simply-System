@@ -36,10 +36,10 @@
                     Surname: <span class="border-bottom d-inline-block w-100">{{ student.student_surname }}</span>
                 </div>
                 <div class="p-2 bd-highlight">
-                    First Name: <span class="border-bottom d-inline-block w-100"></span>
+                    First Name: <span class="border-bottom d-inline-block w-100">{{ student.student_firstname }}</span>
                 </div>
                 <div class="p-2 bd-highlight">
-                    Middle Name: <span class="border-bottom d-inline-block w-100"></span>
+                    Middle Name: <span class="border-bottom d-inline-block w-100">{{ student.student_middlename }}</span>
                 </div>
             </div>
             {% else %}
@@ -47,13 +47,13 @@
             {% endif %}
             <div class="d-flex flex-row bd-highlight mb-3">
                 <div class="p-2 bd-highlight">
-                    College Year: <span class="border-bottom d-inline-block w-100"></span>
+                    College Year: <span class="border-bottom d-inline-block w-100">{{ student.student_year }}</span>
                 </div>
                 <div class="p-2 bd-highlight">
-                    Course: <span class="border-bottom d-inline-block w-100"></span>
+                    Course: <span class="border-bottom d-inline-block w-100">{{ student.student_course }}</span>
                 </div>
                 <div class="p-2 bd-highlight">
-                    Current Section: <span class="border-bottom d-inline-block w-100"></span>
+                    Current Section: <span class="border-bottom d-inline-block w-100">{{ student.student_section }}</span>
                 </div>
             </div>
         </div>
