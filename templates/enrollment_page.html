@@ -39,7 +39,7 @@
 
     <!-- Section Selected Information Container block -->
     <div class="col-md-10">
-      <div class="shadow-sm bg-white rounded w-auto h-auto"
+      <div class="shadow-sm bg-white rounded w-auto h-auto">
         <div class="border border-danger p-3 h-100 w-auto">
           <table class="table table-striped">
             <thead>
@@ -54,23 +54,31 @@
             </thead>
             <tbody>
               {% if courses %}
-                {% for course in courses %}
-                  <tr>
-                    <td>{{ course.college_year }}</td>
-                    <td>{{ course.college_section }}</td>
-                    <td>{{ course.college_subject }}</td>
-                    <td>{{ course.college_day }}</td>
-                    <td>{{ course.schedule_time }}</td>
-                    <td>{{ course.room_section }}</td>
-                  </tr>
-                {% endfor %}
-              {% else %}
+              {% for course in courses %}
                 <tr>
-                  <td colspan="6" class="text-center">No Courses Available</td>
+                <td>{{ course.college_year }}</td>
+                <td>{{ course.college_section }}</td>
+                <td>{{ course.college_subject }}</td>
+                <td>{{ course.college_day }}</td>
+                <td>{{ course.schedule_time }}</td>
+                <td>{{ course.room_section }}</td>
                 </tr>
+              {% endfor %}
+              {% else %}
+              <tr>
+                <td colspan="6" class="text-center">No Courses Available</td>
+              </tr>
               {% endif %}
             </tbody>
           </table>
+          {% if courses %}
+          <div class="d-flex justify-content-center mt-3">
+            <form method="POST" action="/enroll_course">
+              <input type="hidden" name="section" value="{{ selected_section }}">
+              <button type="submit" class="btn btn-primary">Enroll</button>
+            </form>
+          </div>
+          {% endif %}
         </div>
       </div>
     </div>
