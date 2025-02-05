@@ -6,7 +6,8 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
 app.config['SQLALCHEMY_BINDS'] = {
     'college_courses': 'sqlite:///college_course_list.db',
-    'students': 'sqlite:///student_information.db'
+    'students': 'sqlite:///student_information.db',
+    'admins': 'sqlite:///admin_information.db'
 }
 app.config['TEMPLATE_DIR'] = 'StudentPortal/'
 
