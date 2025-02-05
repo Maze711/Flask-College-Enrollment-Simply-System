@@ -8,7 +8,7 @@ app.config['SQLALCHEMY_BINDS'] = {
     'college_courses': 'sqlite:///college_course_list.db',
     'students': 'sqlite:///student_information.db'
 }
-app.config['TEMPLATE_DIR'] = 'Student_Portal/'
+app.config['TEMPLATE_DIR'] = 'StudentPortal/'
 
 # Initialize the database
 db.init_app(app)
