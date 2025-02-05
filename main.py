@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, redirect, render_template, url_for
 from models import db, college_course_list, student_information
 
@@ -7,13 +8,27 @@ app.config['SQLALCHEMY_BINDS'] = {
     'college_courses': 'sqlite:///college_course_list.db',
     'students': 'sqlite:///student_information.db'
 }
+app.config['TEMPLATE_DIR'] = 'Student_Portal/'
 
+# Initialize the database
 db.init_app(app)
 
+def get_template_path(template_name):
+    student_portal_path = os.path.join(app.template_folder, app.config['TEMPLATE_DIR'], template_name)
+    main_template_path = os.path.join(app.template_folder, template_name)
+    
+    if os.path.exists(student_portal_path):
+        return f"{app.config['TEMPLATE_DIR']}{template_name}"
+    elif os.path.exists(main_template_path):
+        return template_name
+    else:
+        raise FileNotFoundError(f"Template {template_name} not found in either directory.")
 
 @app.route('/')
 def main():
-    return render_template('login_page.html')
+    template_path = get_template_path('login_page.html')
+    return render_template(template_path)
+
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -35,12 +50,14 @@ def student_info_page():
     student_number = request.args.get('student_number')
     student = student_information.query.filter_by(student_number=student_number).first()
     course_data = college_course_list.query.all()
-    return render_template('student_info_page.html', student=student, courses=course_data)
+    template_path = get_template_path('student_info_page.html')
+    return render_template(template_path, student=student, courses=course_data)
 
 @app.route('/view_course')
 def view_course():
     course_data = college_course_list.query.all()
-    return render_template('view_course.html', courses=course_data)
+    template_path = get_template_path('view_course.html')
+    return render_template(template_path, courses=course_data)
 
 @app.route('/enroll_course', methods=['GET', 'POST'])
 def enroll_course():
@@ -53,7 +70,8 @@ def enroll_course():
         courses = []
 
     course_section = college_course_list.query.with_entities(college_course_list.college_section).distinct()
-    return render_template('enrollment_page.html', courses=courses, selected_section=selected_section, college_section=course_section)
+    template_path = get_template_path('enrollment_page.html')
+    return render_template(template_path, courses=courses, selected_section=selected_section, college_section=course_section)
 
 if __name__ == '__main__':
     app.run(debug=True)
