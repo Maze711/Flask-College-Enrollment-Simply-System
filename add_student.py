@@ -12,6 +12,7 @@ student_year = "3rd Year"
 student_section = ["", ""]
 student_email = ["badlonmazeclarion@plmun.edu.ph", "callejajhayem_bsit@plmun.edu.ph"]
 student_password = ["1234", "1234"]
+user_role = ["Student", "Student"]
 student_status = "Regular"
 student_enrolled = False
 student_created = datetime.now()
@@ -33,7 +34,8 @@ with app.app_context():
             student_password=student_password[i],
             student_status=student_status,
             student_enrolled=student_enrolled,
-            student_created=student_created
+            student_created=student_created,
+            user_role=user_role[i]
         )
         db.session.add(record)
 

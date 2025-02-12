@@ -12,7 +12,7 @@ admin_email = ["kimchaewon@plmun.edu.ph", "kazuha@plmun.edu.ph"]
 admin_password = ["1234", "1234"]
 admin_status = ["Active", "Inactive"]
 admin_created = datetime.now()
-user_roll = ["Admin", "Admin"]
+user_role = ["Admin", "Admin"]
 
 # Use app.app_context()
 with app.app_context():
@@ -29,7 +29,7 @@ with app.app_context():
             admin_password=admin_password[i],
             admin_status=admin_status[i],
             admin_created=admin_created,
-            user_roll=user_roll[i] 
+            user_role=user_role[i] 
         )
         db.session.add(record)
 

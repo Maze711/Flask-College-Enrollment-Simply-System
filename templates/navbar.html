@@ -6,11 +6,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      {% if user_role == 'student' %}
+      {% if user_role == 'Student' %}
       <a class="nav-link" href="{{ url_for('student_info_page') }}">Home</a>
       <a class="nav-link" href="{{ url_for('view_course') }}">View Courses</a>
       <a class="nav-link" href="{{ url_for('enroll_course') }}">Enrollment</a>
-      {% elif user_role == 'admin' %}
+      {% elif user_role == 'Admin' %}
       <a class="nav-link" href="{{ url_for('admin_dashboard') }}">Dashboard</a>
       <a class="nav-link" href="{{ url_for('manage_courses') }}">Manage Courses</a>
       <a class="nav-link" href="{{ url_for('manage_students') }}">Manage Students</a>

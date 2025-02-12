@@ -52,7 +52,7 @@ def student_info_page():
     student = student_information.query.filter_by(student_number=student_number).first()
     course_data = college_course_list.query.all()
     template_path = get_template_path('Student_portal/student_info_page.html')
-    return render_template(template_path, student=student, courses=course_data)
+    return render_template(template_path, user_role=student.user_role, student=student, courses=course_data)
 
 @app.route('/view_course')
 def view_course():
