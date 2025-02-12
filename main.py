@@ -51,13 +51,13 @@ def student_info_page():
     student_number = request.args.get('student_number')
     student = student_information.query.filter_by(student_number=student_number).first()
     course_data = college_course_list.query.all()
-    template_path = get_template_path('student_info_page.html')
+    template_path = get_template_path('Student_portal/student_info_page.html')
     return render_template(template_path, student=student, courses=course_data)
 
 @app.route('/view_course')
 def view_course():
     course_data = college_course_list.query.all()
-    template_path = get_template_path('view_course.html')
+    template_path = get_template_path('Student_portal/view_course.html')
     return render_template(template_path, courses=course_data)
 
 @app.route('/enroll_course', methods=['GET', 'POST'])
@@ -71,7 +71,7 @@ def enroll_course():
         courses = []
 
     course_section = college_course_list.query.with_entities(college_course_list.college_section).distinct()
-    template_path = get_template_path('enrollment_page.html')
+    template_path = get_template_path('Student_portal/enrollment_page.html')
     return render_template(template_path, courses=courses, selected_section=selected_section, college_section=course_section)
 
 @app.route('/logout')
