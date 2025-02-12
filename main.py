@@ -1,6 +1,6 @@
 import os
 from flask import Flask, request, redirect, render_template, url_for, session
-from models import db, college_course_list, student_information, admin_information
+from models import db, college_course_list, student_information
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
