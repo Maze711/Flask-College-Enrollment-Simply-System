@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+.venv/
+
+# Environment/config files
+.env
+.env.local
+.env.development
+.env.production
+
+# Logs
+*.log
+
+# IDE-specific files
+.vscode/
+.idea/
+.DS_Store
+
+# Database dump
+instance/
+instance/admin_information.db
+instance/student_information.db
+instance/college_course_list.db
+
+# Optional: Local configuration (only if sensitive)
+# config.py        # Uncomment if config.py contains secrets
