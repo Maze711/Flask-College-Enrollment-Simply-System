@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, redirect, render_template, url_for, session
+from flask import Flask, request, redirect, render_template, url_for
 from models import db, college_course_list, student_information
 
 app = Flask(__name__)
@@ -72,12 +72,6 @@ def enroll_course():
     course_section = college_course_list.query.with_entities(college_course_list.college_section).distinct()
     template_path = get_template_path('enrollment_page.html')
     return render_template(template_path, courses=courses, selected_section=selected_section, college_section=course_section)
-
-@app.route('/logout')
-def logout():
-    #session.clear()
-    return redirect(url_for('main'))
-
 
 if __name__ == '__main__':
     app.run(debug=True)
