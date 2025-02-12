@@ -51,7 +51,7 @@ class admin_information(db.Model):
     admin_email = db.Column(db.String(200), nullable=False)
     admin_password = db.Column(db.String(200), nullable=False)
     admin_status = db.Column(Enum('Active', 'Inactive', 'Missing', name='user_status'), nullable=False)
-    user_role = db.Column(Enum('admin', 'student', 'faculty', name='user_roles'), nullable=False)
+    user_role = db.Column(Enum('Head Admin', 'Admin', 'Faculty', name='user_roles'), nullable=False)
     admin_created = db.Column(db.DateTime, nullable=False)
 
     def __repr__(self):

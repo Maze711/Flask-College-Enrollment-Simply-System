@@ -14,6 +14,17 @@ app.config['TEMPLATE_DIR'] = 'StudentPortal/'
 # Initialize the database
 db.init_app(app)
 
+def get_user_role(user_id):
+    student = student_information.query.filter_by(student_number=user_id).first()
+    admin = admin_information.query.filter_by(admin_id=user_id).first()
+
+    if student:
+        return student.user_role
+    elif admin:
+        return admin.user_role
+    else:
+        return None
+
 def get_template_path(template_name):
     student_portal_path = os.path.join(app.template_folder, app.config['TEMPLATE_DIR'], template_name)
     main_template_path = os.path.join(app.template_folder, template_name)
@@ -37,12 +48,15 @@ def login():
         student_number = request.form['student_number']
         student_password = request.form['student_password']
         student = student_information.query.filter_by(student_number=student_number, student_password=student_password).first()
-
-        if student:
+        admin = admin_information.query.filter_by(admin_number=student_number, admin_password=student_password).first()
+        
+        if student and student.student_number == student_number and student.student_password == student_password:
             if student.student_course == 'BSCS':
                 return redirect(url_for('student_info_page', student_number=student.student_number))
             else:
                 return "Access restricted to BSCS students only. Please contact the administration for assistance."
+        elif admin and admin.admin_number == student_number and admin.admin_password == student_password:
+            return redirect(url_for('view_course'))
         else:
             return "Invalid credentials. Please try again or contact the administrator for assistance."
 
