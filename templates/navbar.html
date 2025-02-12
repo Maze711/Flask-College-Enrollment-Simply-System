@@ -1,15 +1,22 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">College Enrollment</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link" href="{{ url_for('student_info_page') }}">Home</a>
-          <a class="nav-link" href="{{ url_for('view_course') }}">View Courses</a>
-          <a class="nav-link" href="{{ url_for('enroll_course') }}">Enrollment</a>
-        </div>
-      </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">College Enrollment</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      {% if user_role == 'student' %}
+      <a class="nav-link" href="{{ url_for('student_info_page') }}">Home</a>
+      <a class="nav-link" href="{{ url_for('view_course') }}">View Courses</a>
+      <a class="nav-link" href="{{ url_for('enroll_course') }}">Enrollment</a>
+      {% elif user_role == 'admin' %}
+      <a class="nav-link" href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+      <a class="nav-link" href="{{ url_for('manage_courses') }}">Manage Courses</a>
+      <a class="nav-link" href="{{ url_for('manage_students') }}">Manage Students</a>
+      {% endif %}
+      <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
     </div>
+    </div>
+  </div>
 </nav>
