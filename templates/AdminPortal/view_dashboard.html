@@ -1,44 +1,68 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
 
-{% block head %}
+<div
+  class="container vh-100 d-flex align-items-start justify-content-center mt-5 pt-5"
+>
+  <div class="row w-100">
+    <div class="col-md-2">
+      <div class="shadow-sm bg-white w-auto rounded h-auto">
+        <div class="border border-primary p-3 w-auto">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            {% if selected_course %}
+                {{ selected_course }}
+            {% else %}
+                Choose Course
+            {% endif %}
+            </button>
 
-{% endblock %}
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                {% for course in courses %}
+                    <li>
+                        <form method="POST" action="/view_dashboard">
+                            <input type="hidden" name="course_list" value="{{ course }}" />
+                            <button class="dropdown-item" type="submit">{{ course }}</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+      </div>
+    </div>
 
-{% block body %}
- 
-<div class="container vh-100 d-flex align-items-start justify-content-center mt-5 pt-5">
-  <div class="shadow-sm bg-white rounded vw-100 h-auto">
-    <table class="table table-striped text-center">
-      <thead>
-        <tr>
-          <th scope="col">Course</th>
-          <th scope="col">Section</th>
-          <th scope="col">Year</th>
-          <th scope="col">Subject</th>
-          <th scope="col">Day</th>
-          <th scope="col">Time</th>
-          <th scope="col">Room</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for course in courses %}
-          <tr>
-            <td>{{ course.college_course }}</td>
-            <td>{{ course.college_year }}</td>
-            <td>{{ course.college_section }}</td>
-            <td>{{ course.college_subject }}</td>
-            <td>{{ course.college_day }}</td>
-            <td>{{ course.schedule_time }}</td>
-            <td>{{ course.room_section }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <!-- Other/Expanded Information Container block -->
+    <div class="col-md-10">
+      <div class="shadow-sm bg-white rounded w-auto h-auto">
+        <div class="border border-danger p-3 w-100">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Student Number</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Middle Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% if student_list %}
+                  {% for student in student_list %}
+                    <tr>
+                    <td>{{ student.student_number }}</td>
+                    <td>{{ student.student_surname }}</td>
+                    <td>{{ student.student_firstname }}</td>
+                    <td>{{ student.student_middlename }}</td>
+                    </tr>
+                  {% endfor %}
+                  {% else %}
+                  <tr>
+                    <td colspan="6" class="text-center">No Course Selected</td>
+                  </tr>
+                  {% endif %}
+                </tbody>
+              </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-{% endblock %}
-
-{% block footer %}
-
-{% endblock %}
+{% endblock %} {% block footer %} {% endblock %}
