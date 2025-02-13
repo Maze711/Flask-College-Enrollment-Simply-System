@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+ 
+<div class="container vh-100 d-flex align-items-start justify-content-center mt-5 pt-5">
+  <div class="shadow-sm bg-white rounded vw-100 h-auto">
+    <table class="table table-striped text-center">
+      <thead>
+        <tr>
+          <th scope="col">Course</th>
+          <th scope="col">Section</th>
+          <th scope="col">Year</th>
+          <th scope="col">Subject</th>
+          <th scope="col">Day</th>
+          <th scope="col">Time</th>
+          <th scope="col">Room</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for course in courses %}
+          <tr>
+            <td>{{ course.college_course }}</td>
+            <td>{{ course.college_year }}</td>
+            <td>{{ course.college_section }}</td>
+            <td>{{ course.college_subject }}</td>
+            <td>{{ course.college_day }}</td>
+            <td>{{ course.schedule_time }}</td>
+            <td>{{ course.room_section }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

@@ -56,7 +56,7 @@ def login():
             else:
                 return "Access restricted to BSCS students only. Please contact the administration for assistance."
         elif admin and admin.admin_number == student_number and admin.admin_password == student_password:
-            return redirect(url_for('view_course'))
+            return redirect(url_for('view_dashboard'))
         else:
             return "Invalid credentials. Please try again or contact the administrator for assistance."
 
@@ -65,7 +65,7 @@ def student_info_page():
     student_number = request.args.get('student_number')
     student = student_information.query.filter_by(student_number=student_number).first()
     course_data = college_course_list.query.all()
-    template_path = get_template_path('Student_portal/student_info_page.html')
+    template_path = get_template_path('StudentPortal/student_info_page.html')
     return render_template(template_path, user_role=student.user_role, student=student, courses=course_data)
 
 @app.route('/view_course')
@@ -87,6 +87,11 @@ def enroll_course():
     course_section = college_course_list.query.with_entities(college_course_list.college_section).distinct()
     template_path = get_template_path('Student_portal/enrollment_page.html')
     return render_template(template_path, courses=courses, selected_section=selected_section, college_section=course_section)
+
+@app.route('/view_dashboard')
+def view_dashboard():
+    course_data = student_information.query.all()
+    return render_template('AdminPortal/view_dashboard.html')
 
 @app.route('/logout')
 def logout():
